@@ -124,13 +124,8 @@
   </style>
 </head>
 
-<audio id="bgMusic" loop preload="auto">
-  <source src="" type="audio/mpeg">
-</audio>
-
-  
 <body>
-  
+
 <!-- Floating Hearts -->
 <div class="floating-hearts">
   <span style="left:10%; animation-delay:0s;">❤️</span>
@@ -158,6 +153,7 @@
   <h2>This comes from my heart 💖</h2>
 
   <div class="heart">❤️</div>
+
   <p id="typewriter"></p>
 
   <div class="signature">
@@ -166,33 +162,22 @@
   </div>
 </div>
 
+<!-- Soft Instrumental Music -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_8b5e8a4c7a.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-  const correctPassword = "RTF_SMMI";
+  const correctPassword = "RTF_SMMI"; // 🔑 change if you want
 
-  const message =
-    "Thank you for making my life truly beautiful with your goodness, kindness, and warmth. Your presence brings peace, positivity, and meaning to my days. I am genuinely grateful for you, for who you are, and for the light you bring into my life.";
+  const message = "Thank you for making my life truly beautiful with your goodness, kindness, and warmth. Your presence brings peace, positivity, and meaning to my days. I am genuinely grateful for you, for who you are, and for the light you bring into my life.";
 
   function unlockCard() {
-  const input = document.getElementById("passwordInput").value;
-  const music = document.getElementById("bgMusic");
-
-  if (input === "RTF_SMMI") {
-    // Unlock the card
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("cardContent").style.display = "block";
-
-    // 🔊 THIS IS THE IMPORTANT LINE
-    music.volume = 0.4;
-    music.play();
-
-    // Start typing effect
-    typeWriterEffect();
-  } else {
-    document.getElementById("errorMsg").style.display = "block";
-  }
-}
-      // Start typing
+    const input = document.getElementById("passwordInput").value;
+    if (input === correctPassword) {
+      document.getElementById("lockScreen").style.display = "none";
+      document.getElementById("cardContent").style.display = "block";
+      document.getElementById("bgMusic").play();
       typeWriterEffect();
     } else {
       document.getElementById("errorMsg").style.display = "block";
@@ -202,12 +187,9 @@
   function typeWriterEffect() {
     let i = 0;
     const speed = 40;
-    const target = document.getElementById("typewriter");
-    target.innerHTML = "";
-
     function typing() {
       if (i < message.length) {
-        target.innerHTML += message.charAt(i);
+        document.getElementById("typewriter").innerHTML += message.charAt(i);
         i++;
         setTimeout(typing, speed);
       }
@@ -216,12 +198,5 @@
   }
 </script>
 
-
 </body>
 </html>
-
-
-
-
-
-
